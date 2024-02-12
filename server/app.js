@@ -6,6 +6,7 @@ const postRouter = require('./Routers/post');
 const userRouter = require('./Routers/user');
 const profileRouter = require('./Routers/profile');
 const managerRouter = require('./Routers/manager');
+const loginRouter = require('./Routers/login')
 
 const app = express();
 
@@ -15,8 +16,8 @@ app.use(logRoutes);
 
 app.get("/", (req, res) => {
     res.json({
-        name: "Discretion",
-        description: "Send and receive private messages."
+        name: "council app",
+        description: "council app for volunteering"
     })
 })
 
@@ -24,5 +25,6 @@ app.use("/users", userRouter);
 app.use("/posts", postRouter);
 app.use("/profiles", profileRouter);
 app.use("/managers", managerRouter);
+app.use("/login", loginRouter)
 
 module.exports = app;
