@@ -1,0 +1,59 @@
+DROP TABLE IF EXISTS User
+DROP TABLE IF EXISTS Organisation
+DROP TABLE IF EXISTS Project
+DROP TABLE IF EXISTS UserProject
+DROP TABLE IF EXISTS Tokens
+DROP TABLE IF EXISTS OrganisationTokens
+
+CREATE TABLE User (
+    UserID INT GENERATED ALWAYS AS IDENTITY,
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Role VARCHAR(255) NOT NULL,
+    PRIMARY KEY (UserID),
+    FOREIGN KEY (UserID) REFERENCES UserID("UserID")
+);
+
+CREATE TABLE Organisation (
+    OrganisationId INT GENERATED ALWAYS AS IDENTITY,
+    Description VARCHAR(255) NOT NULL,
+    OrganisationName VARCHAR(255) NOT NULL,
+    Role VARCHAR(255) NOT NULL,
+    PRIMARY KEY (OrganisationId),
+    FOREIGN KEY (OrganisationId) REFERENCES Organisation("OrganisationID")
+);
+
+CREATE TABLE Project (
+    ProjectId INT GENERATED ALWAYS AS IDENTITY,
+    ActivityName VARCHAR(255) NOT NULL,
+    ActivityType VARCHAR(255) NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+    Day VARCHAR(255) NOT NULL,
+    Date DATE NOT NULL,
+    Organisation VARCHAR(255) NOT NULL,
+    PRIMARY KEY (ProjectID),
+    FOREIGN KEY (ProjectID) REFERENCES UserProject("ProjectID")
+);
+
+CREATE TABLE UserProject (
+    UserID INT GENERATED ALWAYS AS IDENTITY,
+    ProjectID INT GENERATED ALWAYS AS IDENTITY
+)
+
+CREATE TABLE Tokens (
+    UserID INT NOT NULL,
+    TokenID INT GENERATED ALWAYS AS IDENTITY,
+    Token CHAR(36) UNIQUE NOT NULL,
+    PRIMARY KEY (TokenID),
+    FOREIGN KEY (TokenID) REFERENCES User("UserID")
+);
+
+CREATE TABLE OrganisationTokens (
+    TokenID INT GENERATED ALWAYS AS IDENTITY
+    OrganisationID
+    Token CHAR(36) UNIQUE NOT NULL,
+    PRIMARY KEY (TokenID),
+    FOREIGN KEY (TokenID) REFERENCES User("UserID")
+);
+
