@@ -52,21 +52,29 @@ async function showById(req, res){
 
 async function create( req, res){
     try{
-
-    }catch(err){
-
+        const data = req.body
+        const newProject = await Project.create(data)
+        res.status(201).json(newProject)
+    }catch(error){
+        res.status(400).json({error: error.message})
     } 
 }
 async function destroy(req, res){
     try{
-
-    }catch(err){
-
+        const id = parseInt(req.params.id)
+        const post =await Project.destroy()
+        res.status(200).json(post)
+    }catch(error){
+        res.status(404).json({e})
     }
 }
 async function update(req, res){
     try{
-
+        const id = parseInt(req.params.id)
+        const data = req.body
+        const post = await Project.getById(id)
+        const updatedPost =await post.update(data)
+        res.status(200).json(updatedPost)
     }catch(err){
 
     }

@@ -90,7 +90,7 @@ class Project {
       "SELECT * FROM Project WHERE LOWER(ActivityName) = LOWER($1);",
       [ActivityName]
     );
-    if (es.rows.length > 0) {
+    if (ep.rows.length > 0) {
       throw new Error("Project found in DB");
     }
     let response = await db.query(
