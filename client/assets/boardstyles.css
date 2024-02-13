@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* main {
+    background-color: rgb(176, 226, 191);
+    height: 100vh;
+} */
+
+
+
+
+
+
+
+#activities {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#filter-bar {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#day,
+#time,
+#activity-type {
+    margin-bottom: 10px;
+    width: 100%;
+}
