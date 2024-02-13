@@ -8,38 +8,50 @@ const Posts = require('../Models/Posts');
 
 async function index (req, res){
     try{
-
-    }catch(err){
-
+        const data = await Posts.getAll()
+        res.status(200).json(data)
+    }catch(error){
+        res.status(500).json({error: error.message})
     }
 }
 
-async function showByDate(req, res){
-    try{
 
-    }catch(err){
-
-    }
-}
 async function showByType(req, res){
     try{
-
-    }catch(err){
-
+        let type = req.params.type
+        const post = await Posts.getByType(type)
+        res.status(200).json(post)
+    }catch(error){
+        res.status(404).json({error: error.message})
     }
 }
 async function showByName(req, res){
     try{
-
-    }catch(err){
-
+        let name = req.params.name
+        const post = await Posts.getByName(name)
+        res.status(200).json(post)
+    }catch(error){
+        res.status(404).json({error: error.message})
     }
 }
+async function showByDate(req, res){
+    try{
+        let date = parseInt(req.params.date)
+        const post = await Posts.getByDate(date)
+        res.status(200).json(post)
+
+    }catch(error){
+        res.status(404).json({error: error.message})
+    }
+}
+
 async function showById(req, res){
     try{
-
-    }catch(err){
-
+        let id =  parseInt(req.params.date)
+        const post = await Posts.getById(id)
+        res.status(200).json(post)
+    }catch(error){
+        res.status(404).json({error: error.message})
     }
 }
 
