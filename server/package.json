@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm init npm install express, -D nodemon, bcrypt, cors, dotenv, pg, uuid, supertest, jest, fs",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -L index.js",
