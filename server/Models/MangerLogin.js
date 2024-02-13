@@ -26,9 +26,9 @@ class Manager {
 
     static async create(data) {
         const { username, password } = data;
-        let response = await db.query("INSERT INTO Organisation (username, password) VALUES ($1, $2) RETURNING OrganisationId;",
+        let response = await db.query("INSERT INTO Organisation (username, password, role) VALUES ($1, $2, Manager) RETURNING OrganisationId;",
             [username, password]);
-        const newId = response.rows[0].user_id;
+        const newId = response.rows[0].OrganisationId;
         const newUser = await User.getOneById(newId);
         return newUser;
     }
