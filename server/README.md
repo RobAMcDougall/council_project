@@ -29,3 +29,12 @@ manager routes{
     update post
 
 }
+
+login routes{
+    user register
+    user login
+}
+manager login routes{
+    manager login
+    manager register
+}
