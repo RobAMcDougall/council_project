@@ -16,9 +16,13 @@ body {
 } */
 
 
+.carousel {
+    margin: auto;
+    width:1000px;
+    height:360px;
+  }
 
-
-
+  
 
 
 #activities {
