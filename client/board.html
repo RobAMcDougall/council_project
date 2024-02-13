@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/boardstyles.css">
     <script src="./assets/board.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
     <header>
-        <img src="./assets/volunteer-logo.jpg" >
+        <img src="./assets/volunteer-logo.jpg">
         <h1>Placeholder name</h1>
     </header>
-    <br>
-    <main>
-        
-    </main>
+    <div class="main">
+        <article>
+            <div class="content">
+                <section id="activities">
+                    <ul id="activity">Sample item</ul>
+                </section>
+            </div>
+        </article>
+
+        <nav></nav>
+
+        <aside>
+            <div id="filter-bar">
+                <label for="day">Day:</label>
+                <select id="day">
+                    <option value="monday">Monday</option>
+                </select>
+
+                <label for="time">Time:</label>
+                <select id="time">
+                    <option value="morning">Morning</option>
+                </select>
+
+                <label for="activity-type">Activity Type:</label>
+                <select id="activity-type">
+                    <option value="volunteering">Volunteering</option>
+                </select>
+            </div>
+        </aside>
+    </div>
+    <footer>Footer</footer>
 </body>
+
 </html>
