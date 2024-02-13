@@ -42,3 +42,5 @@ async function showById(req, res){
 
     }
 }
+
+module.exports = {index, showByDate, showByType, showByName, showById}

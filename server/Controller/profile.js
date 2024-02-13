@@ -9,5 +9,6 @@ async function getUpcoming(){
 
 }
 async function getUserInfo(){
-    
+
 }
+module.exports = {getPrevious, getUpcoming, getUserInfo}

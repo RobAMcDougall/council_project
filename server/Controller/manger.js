@@ -51,3 +51,11 @@ async function destroy(req, res){
 
     }
 }
+async function update(req, res){
+    try{
+
+    }catch(err){
+
+    }
+}
+module.exports = {index, showByDate, showByName, showByType, showById, create, destroy, update}
