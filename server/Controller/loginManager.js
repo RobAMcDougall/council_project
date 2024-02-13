@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
-const User = require('../Models/Login');
-const Token = require('../Models/Token');
+const User = require('../Models/MangerLogin');
+const Token = require('../Models/MangerToken');
 
 async function register (req, res) {
     try{
