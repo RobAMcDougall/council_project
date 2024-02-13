@@ -3,62 +3,19 @@
 }
 
 body {
-    display: flex;
     min-height: 100vh;
-    flex-direction: column;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
 
-header img {
-    max-width: 80px;
-    height: auto;
-    margin: 0 auto;
-}
-
-header h1 {
-    margin-top: 10px;
-}
 
 /* main {
     background-color: rgb(176, 226, 191);
     height: 100vh;
 } */
 
-/* .content-grid {
-    display: grid;
-    grid-template-columns: 1000px 350px 200px;
-    column-gap: 10px;
-    row-gap: 10px;
-    align-items: center;
-    
-} */
 
-#main {
-    display: flex;
-    flex: 1;
-    align-items: center;
-}
- nav, 
-#main>#main>article {
-    flex: 1;
-}
-
-#main>aside {
-    flex: 0 0 20vw;
-
-}
-
-#main>nav {
-    order: -1;
-}
 
 
 
