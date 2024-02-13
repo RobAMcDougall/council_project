@@ -5,10 +5,10 @@ class Managers {
       (this.description = Description),
       (this.name = OrganisationName);
   }
-  static async organisationInfo(on) {
+  static async organisationInfo(name) {
     const response = await db.query(
       "SELECT * FROM Organisation WHERE LOWER(name) = LOWER($1);",
-      [on]
+      [name]
     );
     if (response.rows.length != 1) {
       throw new Error("can not get Organisation");
@@ -36,10 +36,10 @@ class Project {
       (this.time = Time),
       (this.OrganisationID = OrganisationID);
   }
-  static async getByName(an) {
+  static async getByName(name) {
     const response = await db.query(
       "SELECT * FROM Project WHERE LOWER(ActivityName) = LOWER($1);",
-      [an]
+      [name]
     );
     if (response.rows.length === 0) {
       throw new Error("No activities Found in Database");
@@ -118,4 +118,4 @@ class Project {
     return new Project(response.rows[0]);
   }
 }
-(module.exports = Managers), Project;
+module.exports = Managers, Project;
