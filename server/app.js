@@ -3,7 +3,6 @@ const cors = require('cors');
 
 const logRoutes = require('./Middleware/logger');
 const postRouter = require('./Routers/post');
-const userRouter = require('./Routers/user');
 const profileRouter = require('./Routers/profile');
 const managerRouter = require('./Routers/manager');
 const loginRouter = require('./Routers/login');
