@@ -1,11 +1,5 @@
-// get by name
-// get by type 
-// get by date
-// get by id
-// post a new activity
-// delete by id
-// update post
 const db = require("../Database/connect")
+
 class Managers{
     constructor({ProjectID, ActivityName, ActivityType, Description, Day, Date, Time, OrganisationID }){
         this.id = ProjectID;
@@ -56,11 +50,17 @@ class Managers{
           return new Managers(response.rows[0])
 
     }
-    static async update(){
-
+    static async update(data){
+        const { ActivityName, ActivityType, Description, Day, Date, Time } = data
+        let response = await db.query("UPDATE Project SET ActivityName = $1, ActivityType = $2, Description = $3, Day = $4, Date = $5, Time = $6 WHERE ProjectID = $7 RETURNING *;", [ActivityName, ActivityType, Description, Day, Date, Time]);
+        if(response.rows.length !=1){
+            throw new Error("unable to Update activity")    
+        }
+        return new Managers(response.rows[0]);
     }
     static async destroy(){
-
+        let response = await db.query("DELETE FROM Project WHERE ProjectID = $1 RETURNING *", [this.id]);
+        return new Managers(response.rows[0])
     }
 }
 module.exports = Managers;
