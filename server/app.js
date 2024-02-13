@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.use("/users", userRouter);
+
 app.use("/posts", postRouter);
 app.use("/profiles", profileRouter);
 app.use("/managers", managerRouter);
