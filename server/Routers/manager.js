@@ -13,7 +13,7 @@ managerRouter.get("/:type", authenticator, authorizer("manager"),managerControll
 managerRouter.get("/:date", authenticator, authorizer("manager"),managerController.showByDate);
 managerRouter.get("/:id", authenticator, authorizer("manager"),managerController.showById);
 managerRouter.delete("/:id",authenticator, authorizer("manager"),managerController.destroy);
-managerRouter.update("/:id", authenticator, authorizer("manager"),managerController.update);
+managerRouter.patch("/:id", authenticator, authorizer("manager"),managerController.update);
 
 module.exports = managerRouter;
 
