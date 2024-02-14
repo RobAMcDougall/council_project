@@ -80,3 +80,8 @@ wholesome, captivating children books to local children ages 10 and under. Silly
 'Sunday', '2024-02-25', '12:50:00', 1),
 ('Saturday Morning Learning By Litter-picking.', 'Outdoors', 'Help to clean up one of our various natural
 sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2);
+
+INSERT INTO UserProject (UserID, ProjectID)
+VALUES
+    (1, 2),
+    (2, 1);
