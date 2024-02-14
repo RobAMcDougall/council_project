@@ -82,3 +82,10 @@ const displayPreviousOpportunities = (previousOpportunities) => {
         <p>Name of Activity: ${previousOpportunity2.activityName}</p>
     `
 }
+
+document.getElementById("logout-button").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedInUser");
+    window.location.assign("index.html");
+});
+  
