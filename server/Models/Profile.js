@@ -5,16 +5,19 @@
 const db = require("../Database/connect");
 
 class Profile {
-  constructor({ UserID, Username, Password, Email, AboutMe }) {
-    (this.id = UserID),
-      (this.username = Username),
-      (this.email = Email),
-      (this.aboutMe = AboutMe);
+  constructor({ userid, username, email, aboutme, activityname }) {
+    (this.id = userid),
+      (this.username = username),
+      (this.email = email),
+      (this.aboutme = aboutme),
+      (this.activityname = activityname)
   }
   static async getUserInfo(username) {
+    console.log(username)
     const response = await db.query(
-      "SELECT * FROM User WHERE LOWER(Username) = LOWER($1);"[username]
+      "SELECT * FROM volunteer WHERE username = $1;",[username]
     );
+    console.log(response)
     if (response.rows.length != 1) {
       throw new Error(" can not find user");
     }
@@ -22,12 +25,7 @@ class Profile {
   }
   static async PreviousVolunteering(username) {
     const response = await db.query(
-      `SELECT p."ActivityName"
-                FROM "User" u
-                JOIN "UserProject" up ON u."UserID" = up."UserID"
-                JOIN "Project" p ON up."ProjectID" = p."ProjectID"
-                WHERE u."Username" = $1
-                AND p."Date" < CURRENT_DATE;`,
+      "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date < CURRENT_DATE;",
       [username]
     );
 
@@ -38,12 +36,7 @@ class Profile {
   }
   static async upcomingVolunteering(username) {
     const response = await db.query(
-      `SELECT p."ActivityName"
-            FROM "User" u
-            JOIN "UserProject" up ON u."UserID" = up."UserID"
-            JOIN "Project" p ON up."ProjectID" = p."ProjectID"
-            WHERE u."Username" = $1
-            AND p."Date" > CURRENT_DATE;`,
+      "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date > CURRENT_DATE;",
       [username]
     );
     if (response.rows.length != 1) {

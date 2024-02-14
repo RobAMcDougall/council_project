@@ -7,12 +7,12 @@ const authorizer = require('../Middleware/authorization');
 
 const profileRouter = Router();
 
-profileRouter.get("/", authenticator, authorizer("user"), (req, res) => {
+profileRouter.get("/", (req, res) => {
     res.send("This is the user profile page");
 });
-profileRouter.get("/previous/:username", authenticator, authorizer("user"), profileController.getPrevious);
-profileRouter.get("/upcoming/:username", authenticator, authorizer("user"), profileController.getUpcoming);
-profileRouter.get("/userInfo/:username", authenticator, authorizer("user"), profileController.getUserInfo);
+profileRouter.get("/previous/:username", profileController.getPrevious);
+profileRouter.get("/upcoming/:username", profileController.getUpcoming);
+profileRouter.get("/userInfo/:username", profileController.getUserInfo);
 
 
 module.exports = profileRouter;
