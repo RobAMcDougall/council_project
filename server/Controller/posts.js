@@ -9,6 +9,7 @@ const Posts = require('../Models/Posts');
 async function index (req, res){
     try{
         const data = await Posts.getAll()
+
         res.status(200).json(data)
     }catch(error){
         res.status(500).json({error: error.message})
@@ -27,15 +28,15 @@ async function showByType(req, res){
         res.status(404).json({error: error.message})
     }
 }
-// async function showByName(req, res){
-//     try{
-//         let name = req.params.name
-//         const post = await Posts.getByName(name)
-//         res.status(200).json(post)
-//     }catch(error){
-//         res.status(404).json({error: error.message})
-//     }
-// }
+async function showByName(req, res){
+    try{
+        let name = req.params.name
+        const post = await Posts.getByName(name)
+        res.status(200).json(post)
+    }catch(error){
+        res.status(404).json({error: error.message})
+    }
+}
 async function showByDate(req, res){
     try{
         let date = parseInt(req.params.date)
