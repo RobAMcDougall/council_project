@@ -79,6 +79,9 @@ INSERT INTO "Project" ("ActivityName", "ActivityType", "Description", "Day", "Da
 wholesome, captivating childrens books to local children ages 10 and under. Silly voices welcome!',
 'Sunday', '2024-02-25', '12:50:00', 1),
 ('Saturday Morning Learning By Litter-picking.', 'Outdoors', 'Help to clean up one of our various natural
-sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2);
+sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2),
+('Skills Fair.', 'Education', 'Join us at the Florin County Library events space for
+a smorgasbord of skills based workshops. Whether you are looking to pick up something new or pass
+on your knowledge to the next generous, get involved!', 'Wednesday', '2024-02-28', '18:00:00', 3)
 
 
