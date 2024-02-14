@@ -15,7 +15,14 @@ async function index (req, res){
         res.status(500).json({error: error.message})
     }
 }
-
+async function getUpcoming(req, res) {
+    try {
+      const upcoming = await Posts.upcomingVolunteering();
+      res.status(200).json(upcoming);
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  }
 
 async function showByType(req, res){
     try{
@@ -58,4 +65,4 @@ async function showById(req, res){
     }
 }
 
-module.exports = {index, showByDate, showByType, showByName, showById}
+module.exports = {index, showByDate, showByType, showByName, showById, getUpcoming}

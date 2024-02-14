@@ -4,7 +4,7 @@ const Project = require('../Models/Manager')
 async function index (req, res){
     try{
         let name = req.params.name
-        const manager = await Managers.organisationInfo()
+        const manager = await Managers.organizationInfo(name)
         res.status(200).json(manager) 
     }catch(error){
         res.status(404).json({error:error.message})
