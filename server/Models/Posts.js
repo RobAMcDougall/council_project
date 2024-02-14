@@ -42,26 +42,30 @@ class Posts {
   }
 
   static async getByType(type) {
+   
     const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityType") = LOWER($1);',
+      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") LIKE LOWER($1);',
       [type]
     );
+    console.log("SQL Query:", 'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") LIKE LOWER($1);', [type]);
+
+    console.log(response)
     if (response.rows.length === 0) {
       throw new Error("No activities Found in Database");
     }
     return response.rows.map((row) => new Posts(row));
   }
 
-  static async getByName(name) {
-    const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") = LOWER($1);',
-      [name]
-    );
-    if (response.rows.length === 0) {
-      throw new Error("No activities Found in Database");
-    }
-    return response.rows.map((row) => new Posts(row));
-  }
+  // static async getByName(name) {
+  //   const response = await db.query(
+  //     'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") = LOWER($1);',
+  //     [name]
+  //   );
+  //   if (response.rows.length === 0) {
+  //     throw new Error("No activities Found in Database");
+  //   }
+  //   return response.rows.map((row) => new Posts(row));
+  // }
 
   static async getByDate(date) {
     const response = await db.query(
