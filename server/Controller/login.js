@@ -24,7 +24,7 @@ async function login (req, res) {
     try{
         const user =await User.getOneByUsername(data.username)
         const authenticated = await bcrypt.compare(data.password, user.password)
-        
+
         if(!authenticated){
             throw new Error("Incorrect details")
         }else{

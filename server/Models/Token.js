@@ -3,25 +3,26 @@ const { v4: uuidv4 } = require("uuid");
 const db = require("../Database/connect");
 
 class Token {
-  constructor({ token_id, user_id, token }) {
-    this.token_id = token_id;
-    this.user_id = user_id;
+  constructor({ tokenid, userid, token }) {
+    this.tokenid = tokenid;
+    this.userid = userid;
     this.token = token;
   }
 
-  static async create(user_id) {
+  static async create(userid) {
     const token = uuidv4();
     const response = await db.query(
-      "INSERT INTO token (user_id, token) VALUES($1, $2) RETURNING token_id;",
-      [user_id, token]
+      "INSERT INTO tokens (userid, token) VALUES($1, $2) RETURNING tokenid;",
+      [userid, token]
     );
-    const newId = response.rows[0].token_id;
+    console.log(response.rows);
+    const newId = response.rows[0].tokenid;
     const newToken = await Token.getOneById(newId);
     return newToken;
   }
 
   static async getOneById(id) {
-    const response = await db.query("SELECT * FROM token WHERE token_id = $1", [
+    const response = await db.query("SELECT * FROM tokens WHERE tokenid = $1", [
       id,
     ]);
     if (response.rows.length != 1) {
@@ -32,7 +33,7 @@ class Token {
   }
 
   static async getOneByToken(token) {
-    const response = await db.query("SELECT * FROM token WHERE token = $1", [
+    const response = await db.query("SELECT * FROM tokens WHERE token = $1", [
       token,
     ]);
     if (response.rows.length != 1) {
