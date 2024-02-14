@@ -1,14 +1,14 @@
 const db = require("../Database/connect");
 
 class User {
-  constructor({ userID, username, password }) {
-    this.id = userID;
+  constructor({ userid, username, password }) {
+    this.id = userid;
     this.username = username;
     this.password = password;
   }
 
   static async getOneById(id) {
-    const response = await db.query("SELECT * FROM Volunteer WHERE userID = $1", [
+    const response = await db.query("SELECT * FROM Volunteer WHERE userid = $1", [
       id,
     ]);
     if (response.rows.length != 1) {
@@ -28,12 +28,12 @@ class User {
   }
 
   static async create(data) {
-    const { username, password } = data;
+    const { username, email, password } = data;
     let response = await db.query(
-      "INSERT INTO Volunteer (username, password, role) VALUES ($1, $2, User) RETURNING userID;",
-      [username, password]
+      "INSERT INTO Volunteer (username, email, password, role) VALUES ($1, $2, $3, 'Volunteer') RETURNING userid;",
+      [username, email, password]
     );
-    const newId = response.rows[0].userID;
+    const newId = response.rows[0].userid;
     const newUser = await User.getOneById(newId);
     return newUser;
   }
