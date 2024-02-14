@@ -1,17 +1,17 @@
 const db = require("../Database/connect");
 class Managers {
-  constructor({ OrganisationID, Description, OrganisationName }) {
-    (this.id = OrganisationID),
+  constructor({ OrganizationID, Description, OrganizationName }) {
+    (this.id = OrganizationID),
       (this.description = Description),
-      (this.name = OrganisationName);
+      (this.name = OrganizationName);
   }
-  static async organisationInfo(name) {
+  static async organizationInfo(name) {
     const response = await db.query(
-      "SELECT * FROM Organisation WHERE LOWER(name) = LOWER($1);",
+      "SELECT * FROM Organization WHERE LOWER(name) = LOWER($1);",
       [name]
     );
     if (response.rows.length != 1) {
-      throw new Error("can not get Organisation");
+      throw new Error("can not get Organization");
     }
     return new City(response.rows[0]);
   }
@@ -25,7 +25,7 @@ class Project {
     Day,
     Date,
     Time,
-    OrganisationID,
+   OrganizationID,
   }) {
     this.id = ProjectID;
     (this.name = ActivityName),
@@ -34,7 +34,7 @@ class Project {
       (this.Day = Day),
       (this.Date = Date),
       (this.time = Time),
-      (this.OrganisationID = OrganisationID);
+      (this.OrganizationID = OrganizationID);
   }
   static async getByName(name) {
     const response = await db.query(
@@ -84,7 +84,7 @@ class Project {
       Day,
       Date,
       Time,
-      OrganisationID,
+     OrganizationID,
     } = data;
     const ep = await db.query(
       "SELECT * FROM Project WHERE LOWER(ActivityName) = LOWER($1);",
@@ -94,10 +94,10 @@ class Project {
       throw new Error("Project found in DB");
     }
     let response = await db.query(
-      "INSERT INTO Project (ActivityName, ActivityType, Description, Day, Date, Time, OrganisationID) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
-      [ActivityName, ActivityType, Description, Day, Date, Time, OrganisationID]
+      "INSERT INTO Project (ActivityName, ActivityType, Description, Day, Date, Time, OrganizationID) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
+      [ActivityName, ActivityType, Description, Day, Date, Time, OrganizationID]
     );
-    return new Organisation(response.rows[0]);
+    return new Project(response.rows[0]);
   }
   static async update(data) {
     const { ActivityName, ActivityType, Description, Day, Date, Time } = data;

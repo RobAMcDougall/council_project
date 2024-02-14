@@ -62,7 +62,7 @@ async function create( req, res){
 async function destroy(req, res){
     try{
         const id = parseInt(req.params.id)
-        const post =await Project.destroy()
+        const post =await Project.destroy(id)
         res.status(200).json(post)
     }catch(error){
         res.status(404).json({e})

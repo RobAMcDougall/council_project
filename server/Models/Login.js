@@ -8,7 +8,7 @@ class User {
   }
 
   static async getOneById(id) {
-    const response = await db.query("SELECT * FROM User WHERE userID = $1", [
+    const response = await db.query("SELECT * FROM Volunteer WHERE userID = $1", [
       id,
     ]);
     if (response.rows.length != 1) {
@@ -18,7 +18,7 @@ class User {
   }
 
   static async getOneByUsername(username) {
-    const response = await db.query("SELECT * FROM User WHERE username = $1", [
+    const response = await db.query("SELECT * FROM Volunteer WHERE username = $1", [
       username,
     ]);
     if (response.rows.length != 1) {
@@ -30,7 +30,7 @@ class User {
   static async create(data) {
     const { username, password } = data;
     let response = await db.query(
-      "INSERT INTO User (username, password, role) VALUES ($1, $2, User) RETURNING userID;",
+      "INSERT INTO Volunteer (username, password, role) VALUES ($1, $2, User) RETURNING userID;",
       [username, password]
     );
     const newId = response.rows[0].userID;

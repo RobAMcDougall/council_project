@@ -6,37 +6,37 @@
 const db = require("../Database/connect");
 class Posts {
   constructor({
-    ProjectID,
-    ActivityName,
-    ActivityType,
-    Description,
-    Day,
-    Date,
+  projectid,
+  activityname,
+  activitytype,
+  description,
+  day,
+  date,
     Time,
-    OrganisationID,
+  	organizationid,
+    organizationname
   }) {
-    this.id = ProjectID;
-    (this.name = ActivityName),
-      (this.type = ActivityType),
-      (this.Description = Description),
-      (this.Day = Day),
-      (this.Date = Date),
+    this.id =  projectid;
+    (this.name = activityname),
+      (this.type = activitytype),
+      (this.description = description),
+      (this.day = day),
+      (this.date = date),
       (this.time = Time),
-      (this.OrganisationID = OrganisationID);
+      (this.organizationid = organizationid),
+      (this.organizationname = organizationname);
   }
-  //     SELECT p.*, o."OrganisationName"
-  // FROM "Project" p
-  // JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID"
-  // ORDER BY p."Date";
+  
 
   static async getAll() {
     const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" ORDER BY p."Date";'
+      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID ORDER BY p.date;"
     );
 
     if (response.rows.length === 0) {
       throw new Error("No projects found");
     }
+
 
     return response.rows.map((row) => new Posts(row));
   }
@@ -44,32 +44,29 @@ class Posts {
   static async getByType(type) {
    
     const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") LIKE LOWER($1);',
+      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE LOWER(p.ActivityName) LIKE LOWER($1);"
       [type]
     );
-    console.log("SQL Query:", 'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") LIKE LOWER($1);', [type]);
-
-    console.log(response)
     if (response.rows.length === 0) {
       throw new Error("No activities Found in Database");
     }
     return response.rows.map((row) => new Posts(row));
   }
 
-  // static async getByName(name) {
-  //   const response = await db.query(
-  //     'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE LOWER(p."ActivityName") = LOWER($1);',
-  //     [name]
-  //   );
-  //   if (response.rows.length === 0) {
-  //     throw new Error("No activities Found in Database");
-  //   }
-  //   return response.rows.map((row) => new Posts(row));
-  // }
+  static async getByName(name) {
+    const response = await db.query(
+      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE LOWER(p.ActivityName) = LOWER($1);",
+      [name]
+    );
+    if (response.rows.length === 0) {
+      throw new Error("No activities Found in Database");
+    }
+    return response.rows.map((row) => new Posts(row));
+  }
 
   static async getByDate(date) {
     const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE p."Date" = $1;',
+      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE p.Date = $1;",
       [date]
     );
     if (response.rows.length === 0) {
@@ -79,7 +76,7 @@ class Posts {
   }
   static async getById(id) {
     const response = await db.query(
-      'SELECT p.*, o."OrganisationName" FROM "Project" p JOIN "Organisation" o ON p."OrganisationID" = o."OrganisationID" WHERE p."ProjectID" = $1;',
+      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE p.ProjectID = $1;",
       [id]
     );
     if (response.rows.length === 0) {
