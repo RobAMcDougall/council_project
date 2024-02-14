@@ -50,7 +50,7 @@ async function showByDate(req, res){
 
 async function showById(req, res){
     try{
-        let id =  parseInt(req.params.date)
+        let id =  parseInt(req.params.id)
         const post = await Posts.getById(id)
         res.status(200).json(post)
     }catch(error){
@@ -58,4 +58,4 @@ async function showById(req, res){
     }
 }
 
-module.exports = {index, showByDate, showByType, showById}
+module.exports = {index, showByDate, showByType, showByName, showById}

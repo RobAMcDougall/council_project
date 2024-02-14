@@ -44,7 +44,7 @@ class Posts {
   static async getByType(type) {
    
     const response = await db.query(
-      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE LOWER(p.ActivityName) LIKE LOWER($1);"
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.activitytype LIKE $1",
       [type]
     );
     if (response.rows.length === 0) {
@@ -55,7 +55,7 @@ class Posts {
 
   static async getByName(name) {
     const response = await db.query(
-      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE LOWER(p.ActivityName) = LOWER($1);",
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE LOWER(p.activityname) = LOWER($1);",
       [name]
     );
     if (response.rows.length === 0) {
@@ -66,7 +66,7 @@ class Posts {
 
   static async getByDate(date) {
     const response = await db.query(
-      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE p.Date = $1;",
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.Date = $1;",
       [date]
     );
     if (response.rows.length === 0) {
@@ -76,13 +76,13 @@ class Posts {
   }
   static async getById(id) {
     const response = await db.query(
-      "SELECT p.*, o.OrganizationName FROM Project p JOIN Organization o ON p.OrganizationID = o.OrganizationID WHERE p.ProjectID = $1;",
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.ProjectID = $1;",
       [id]
     );
     if (response.rows.length === 0) {
       throw new Error("No Project Found With This Id in the Database");
     }
-    return response.rows.map((row) => new Project(row));
+    return response.rows.map((row) => new Posts(row));
   }
 
 }
