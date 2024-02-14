@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const urlParams = new URLSearchParams(window.location.search)
         const activityId = urlParams.get('id')
 
-        const response = await fetch(`http://localhost:3000/posts/${activityId}`)
+        const response = await fetch(`http://localhost:3000/posts/activityId/${activityId}`)
         const activityData = await response.json()
 
 
@@ -32,3 +32,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error('Error fetching activity data:', error)
     }
 })
+
+document.getElementById("logout-button").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedInUser");
+    window.location.assign("index.html");
+});
+  
