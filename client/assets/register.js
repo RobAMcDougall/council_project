@@ -11,12 +11,12 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
         },
         body: JSON.stringify({
             username: form.get("username"),
-            username: form.get("email"),
+            email: form.get("email"),
             password: form.get("password")
         })
     }
 
-    const response = await fetch("http://localhost:3000/login/register", options);
+    const response = await fetch("http://localhost:3000/login/volunteer/register", options);
     const data = await response.json();
 
     if (response.status == 201) {

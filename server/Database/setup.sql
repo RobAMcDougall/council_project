@@ -23,7 +23,7 @@ CREATE TABLE Volunteer (
 
 CREATE TABLE Tokens (
     UserID INTEGER NOT NULL,
-    TokenID VARCHAR(255) PRIMARY KEY,
+    TokenID SERIAL PRIMARY KEY,
     Token CHAR(36) NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Volunteer (UserID) 
 );
