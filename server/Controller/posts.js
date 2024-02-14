@@ -18,22 +18,24 @@ async function index (req, res){
 
 async function showByType(req, res){
     try{
+        console.log(21)
         let type = req.params.type
+        console.log(type)
         const post = await Posts.getByType(type)
         res.status(200).json(post)
     }catch(error){
         res.status(404).json({error: error.message})
     }
 }
-async function showByName(req, res){
-    try{
-        let name = req.params.name
-        const post = await Posts.getByName(name)
-        res.status(200).json(post)
-    }catch(error){
-        res.status(404).json({error: error.message})
-    }
-}
+// async function showByName(req, res){
+//     try{
+//         let name = req.params.name
+//         const post = await Posts.getByName(name)
+//         res.status(200).json(post)
+//     }catch(error){
+//         res.status(404).json({error: error.message})
+//     }
+// }
 async function showByDate(req, res){
     try{
         let date = parseInt(req.params.date)
@@ -55,4 +57,4 @@ async function showById(req, res){
     }
 }
 
-module.exports = {index, showByDate, showByType, showByName, showById}
+module.exports = {index, showByDate, showByType, showById}
