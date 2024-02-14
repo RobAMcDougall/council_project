@@ -6,10 +6,10 @@ const db = require("../Database/connect");
 
 class Profile {
   constructor({ UserID, Username, Password, Email, AboutMe }) {
-        (this.id = UserID),
-        (this.username = Username),
-        (this.email = Email),
-        (this.aboutMe = AboutMe);
+    (this.id = UserID),
+      (this.username = Username),
+      (this.email = Email),
+      (this.aboutMe = AboutMe);
   }
   static async getUserInfo(username) {
     const response = await db.query(
