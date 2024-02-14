@@ -84,6 +84,17 @@ class Posts {
     }
     return response.rows.map((row) => new Posts(row));
   }
+  static async upcomingVolunteering() {
+    const response = await db.query(
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.organizationid = o.organizationid WHERE p.date > CURRENT_DATE ORDER BY p.date DESC LIMIT 2;"
+    );
+    if (response.rows.length === 0) {
+      throw new Error("No upcoming projects found");
+    }
+  
+    return response.rows.map(row => new Posts(row));
+}
+
 
 }
 

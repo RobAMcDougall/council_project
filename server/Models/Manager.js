@@ -1,44 +1,46 @@
 const db = require("../Database/connect");
 class Managers {
-  constructor({ OrganizationID, Description, OrganizationName }) {
-    (this.id = OrganizationID),
-      (this.description = Description),
-      (this.name = OrganizationName);
+  constructor({ organizationid, description, organizationname }) {
+    (this.id = organizationid),
+      (this.description = description),
+      (this.name = organizationname);
   }
   static async organizationInfo(name) {
     const response = await db.query(
-      "SELECT * FROM Organization WHERE LOWER(name) = LOWER($1);",
+      "SELECT * FROM organization WHERE LOWER(organizationname) = LOWER($1);",
       [name]
     );
     if (response.rows.length != 1) {
       throw new Error("can not get Organization");
     }
-    return new City(response.rows[0]);
+    return new Managers(response.rows[0]);
   }
 }
 class Project {
   constructor({
-    ProjectID,
-    ActivityName,
-    ActivityType,
-    Description,
-    Day,
-    Date,
-    Time,
-   OrganizationID,
-  }) {
-    this.id = ProjectID;
-    (this.name = ActivityName),
-      (this.type = ActivityType),
-      (this.Description = Description),
-      (this.Day = Day),
-      (this.Date = Date),
-      (this.time = Time),
-      (this.OrganizationID = OrganizationID);
-  }
+    projectid,
+    activityname,
+    activitytype,
+    description,
+    day,
+    date,
+      Time,
+      organizationid,
+      organizationname
+    }) {
+      this.id =  projectid;
+      (this.name = activityname),
+        (this.type = activitytype),
+        (this.description = description),
+        (this.day = day),
+        (this.date = date),
+        (this.time = Time),
+        (this.organizationid = organizationid),
+        (this.organizationname = organizationname);
+    }
   static async getByName(name) {
     const response = await db.query(
-      "SELECT * FROM Project WHERE LOWER(ActivityName) = LOWER($1);",
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE LOWER(p.activityname) = LOWER($1);",
       [name]
     );
     if (response.rows.length === 0) {
@@ -47,10 +49,10 @@ class Project {
     return response.rows.map((a) => new Project(a));
   }
 
-  static async getByType(at) {
+  static async getByType(type) {
     const response = await db.query(
-      "SELECT * FROM Project WHERE LOWER(ActivityType) = LOWER($1);",
-      [at]
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.activitytype LIKE $1",
+      [type]
     );
     if (response.rows.length === 0) {
       throw new Error("No activities Found in Database");
@@ -58,9 +60,9 @@ class Project {
     return response.rows.map((a) => new Project(a));
   }
   static async getByDate(date) {
-    const response = await db.query("SELECT * FROM Project WHERE Date = $1;", [
-      date,
-    ]);
+    const response = await db.query("SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.Date = $1;",
+    [date]
+    );
     if (response.rows.length === 0) {
       throw new Error("No activities found in the database for the given date");
     }
@@ -68,7 +70,7 @@ class Project {
   }
   static async getById(id) {
     const response = await db.query(
-      "SELECT * FROM Project WHERE ProjectID = $1;",
+      "SELECT *, o.organizationname FROM project p JOIN organization o ON p.	organizationid = o.	organizationid WHERE p.ProjectID = $1;",
       [id]
     );
     if (response.rows.length === 0) {
@@ -78,32 +80,32 @@ class Project {
   }
   static async create(data) {
     const {
-      ActivityName,
-      ActivityType,
-      Description,
-      Day,
-      Date,
+    activityname,
+    activitytype,
+    description,
+    day,
+    date,
       Time,
-     OrganizationID,
+      organizationid
     } = data;
     const ep = await db.query(
-      "SELECT * FROM Project WHERE LOWER(ActivityName) = LOWER($1);",
-      [ActivityName]
+      "SELECT * FROM Project WHERE LOWER(activityname) = LOWER($1);",
+      [activityname]
     );
     if (ep.rows.length > 0) {
       throw new Error("Project found in DB");
     }
     let response = await db.query(
-      "INSERT INTO Project (ActivityName, ActivityType, Description, Day, Date, Time, OrganizationID) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
-      [ActivityName, ActivityType, Description, Day, Date, Time, OrganizationID]
+      "INSERT INTO Project (activityname, activitytype, description, day, date, Time,  organizationid) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;",
+      [ activityname, activitytype, description, day, date, Time,  organizationid]
     );
     return new Project(response.rows[0]);
   }
   static async update(data) {
-    const { ActivityName, ActivityType, Description, Day, Date, Time } = data;
+    const { activityname, activitytype, description, day, date, Time, projectid } = data;
     let response = await db.query(
-      "UPDATE Project SET ActivityName = $1, ActivityType = $2, Description = $3, Day = $4, Date = $5, Time = $6 WHERE ProjectID = $7 RETURNING *;",
-      [ActivityName, ActivityType, Description, Day, Date, Time]
+      "UPDATE project SET activityname = $1, activitytype = $2, description = $3, day = $4, date = $5, Time = $6 WHERE projectid = $7 RETURNING *;",
+      [activityname, activitytype, description, day, date, Time, projectid]
     );
     if (response.rows.length != 1) {
       throw new Error("unable to Update activity");
@@ -112,7 +114,7 @@ class Project {
   }
   static async destroy() {
     let response = await db.query(
-      "DELETE FROM Project WHERE ProjectID = $1 RETURNING *",
+      "DELETE FROM project WHERE projectid = $1 RETURNING *",
       [this.id]
     );
     return new Project(response.rows[0]);

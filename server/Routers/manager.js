@@ -6,14 +6,14 @@ const authorizer = require('../Middleware/authorization');
 
 const managerRouter = Router();
 
-managerRouter.get("/", authenticator, authorizer("manager"), managerController.index);
-managerRouter.post("/", authenticator, authorizer("manager"),managerController.create);
-managerRouter.get("/activityName/:name", authenticator, authorizer("manager"),managerController.showByName);
-managerRouter.get("/activityType/:type", authenticator, authorizer("manager"),managerController.showByType);
-managerRouter.get("/activityDate/:date", authenticator, authorizer("manager"),managerController.showByDate);
-managerRouter.get("/activityId/:id", authenticator, authorizer("manager"),managerController.showById);
-managerRouter.delete("/activityId/:id",authenticator, authorizer("manager"),managerController.destroy);
-managerRouter.patch("/activityId/:id", authenticator, authorizer("manager"),managerController.update);
+managerRouter.get("/:name",  managerController.index);
+managerRouter.post("/", managerController.create);
+managerRouter.get("/activityName/:name", managerController.showByName);
+managerRouter.get("/activityType/:type", managerController.showByType);
+managerRouter.get("/activityDate/:date", managerController.showByDate);
+managerRouter.get("/activityId/:id", managerController.showById);
+managerRouter.delete("/activityId/:id",managerController.destroy);
+managerRouter.patch("/activityId/:id", managerController.update);
 
 module.exports = managerRouter;
 
