@@ -70,7 +70,7 @@ const displayUpcomingOpportunities = (upcomingOpportunities) => {
     `
 }
 
-function displayPreviousOpportunities(previousOpportunities) {
+const displayPreviousOpportunities = (previousOpportunities) => {
 
     const previousOpportunity1 = previousOpportunities[0]
     document.getElementById('previousOpportunity1').innerHTML = `
