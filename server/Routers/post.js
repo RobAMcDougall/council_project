@@ -7,9 +7,9 @@ const authorizer = require('../Middleware/authorization');
 const postRouter = Router();
 
 postRouter.get("/", postController.index);
-postRouter.get("/:type", postController.showByType);
-//postRouter.get("/:name",  postController. showByName);
-postRouter.get("/:date",  postController.showByDate);
-postRouter.get("/:id", postController.showById);
+postRouter.get("/activityType/:type", postController.showByType);
+postRouter.get("/activityName/:name",  postController. showByName);
+postRouter.get("/activityDate/:date",  postController.showByDate);
+postRouter.get("/activityId/:id", postController.showById);
 
 module.exports = postRouter;

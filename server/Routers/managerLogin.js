@@ -4,7 +4,7 @@ const loginController = require('../Controller/loginManager');
 
 const managerLoginRouter = Router();
 
-managerLoginRouter.post("/register", loginController.register);
-managerLoginRouter.post("/login", loginController.login);
+managerLoginRouter.post("/manager/register", loginController.register);
+managerLoginRouter.post("/manager/login", loginController.login);
 
 module.exports = managerLoginRouter;

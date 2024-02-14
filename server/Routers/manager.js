@@ -8,12 +8,12 @@ const managerRouter = Router();
 
 managerRouter.get("/", authenticator, authorizer("manager"), managerController.index);
 managerRouter.post("/", authenticator, authorizer("manager"),managerController.create);
-managerRouter.get("/:name", authenticator, authorizer("manager"),managerController.showByName);
-managerRouter.get("/:type", authenticator, authorizer("manager"),managerController.showByType);
-managerRouter.get("/:date", authenticator, authorizer("manager"),managerController.showByDate);
-managerRouter.get("/:id", authenticator, authorizer("manager"),managerController.showById);
-managerRouter.delete("/:id",authenticator, authorizer("manager"),managerController.destroy);
-managerRouter.patch("/:id", authenticator, authorizer("manager"),managerController.update);
+managerRouter.get("/activityName/:name", authenticator, authorizer("manager"),managerController.showByName);
+managerRouter.get("/activityType/:type", authenticator, authorizer("manager"),managerController.showByType);
+managerRouter.get("/activityDate/:date", authenticator, authorizer("manager"),managerController.showByDate);
+managerRouter.get("/activityId/:id", authenticator, authorizer("manager"),managerController.showById);
+managerRouter.delete("/activityId/:id",authenticator, authorizer("manager"),managerController.destroy);
+managerRouter.patch("/activityId/:id", authenticator, authorizer("manager"),managerController.update);
 
 module.exports = managerRouter;
 
