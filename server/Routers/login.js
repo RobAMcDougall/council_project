@@ -4,7 +4,7 @@ const loginController = require('../Controller/login');
 
 const loginRouter = Router();
 
-loginRouter.post("/register", loginController.register);
-loginRouter.post("/login", loginController.login);
+loginRouter.post("/volunteer/register", loginController.register);
+loginRouter.post("/volunteer/login", loginController.login);
 
 module.exports = loginRouter;
