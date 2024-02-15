@@ -32,7 +32,7 @@ CREATE TABLE Project (
     ProjectID SERIAL PRIMARY KEY,
     ActivityName VARCHAR(255) NOT NULL,
     ActivityType VARCHAR(255) NOT NULL,
-    Description VARCHAR(255) NOT NULL,
+    Description VARCHAR(1000) NOT NULL,
     Day VARCHAR(255) NOT NULL,
     Date DATE NOT NULL,
     "Time" TIME NOT NULL,
@@ -91,7 +91,7 @@ opportunity geared towards being childrens first experience volunteering. Friday
 bus and taken to various sites around Florin to help refill the bird feeders, while being educated by some of our keen amateur 
 Ornithologists!', 'Friday', '2024-02-23', '15:30:00', 2),
 ('Creative Writing Roundtable', 'Workshop', 'Looking for any volunteers to help host a creative writing roundtable/workshop for
-children of any ages. Help give advice and spark a lifelong passion for the art of storytelling!', 'Tuesday', '2024:02:20', '17:00:00', 1);
+children of any ages. Help give advice and spark a lifelong passion for the art of storytelling!', 'Tuesday', '2024-02-20', '17:00:00', 1);
 
 
 INSERT INTO UserProject (UserID, ProjectID)
