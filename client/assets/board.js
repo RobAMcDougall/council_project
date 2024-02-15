@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const response = await fetch('http://localhost:3000/posts/')
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         listGroup.innerHTML = ''
         data.forEach(activity => {
-            console.log(activity)
+            
 
             const listItem = document.createElement('a')
             listItem.href = `./activity.html?id=${activity.id}`
@@ -33,31 +35,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 
-document.getElementById("day").addEventListener("change", () => {
+document.getElementById("day").addEventListener("change", async () => {
     const selectedDay = document.getElementById("day").value;
 
     const listGroup = document.querySelector(".list-group");
+    
+    const response = await fetch('http://localhost:3000/posts/')
+    const data = await response.json();
 
     
     const filteredData = data.filter((activity) => {
-        return activity.Day === selectedDay;
+        return activity.day === selectedDay;
     });
+
+    
 
     
     listGroup.innerHTML = "";
 
     filteredData.forEach((activity) => {
         const listItem = document.createElement("a");
-        listItem.href = `./activity.html?id=${activity.ProjectID}`;
+        listItem.href = `./activity.html?id=${activity.id}`;
         listItem.classList.add("list-group-item", "list-group-item-action");
 
         listItem.innerHTML = `
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">${activity.ActivityName}</h5>
-          <small>${activity.Date}</small>
+          <h5 class="mb-1">${activity.name}</h5>
+          <small>${activity.date}</small>
         </div>
-        <p class="mb-1">${activity.Description}</p>
-        <small>${activity.Day} at ${activity.Time}</small>
+        <p class="mb-1">${activity.description}</p>
+        <small>${activity.day} at ${activity.time}</small>
       `;
 
         listGroup.appendChild(listItem);
