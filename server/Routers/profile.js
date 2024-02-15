@@ -10,8 +10,8 @@ const profileRouter = Router();
 profileRouter.get("/", (req, res) => {
     res.send("This is the user profile page");
 });
-profileRouter.get("/previous/:username",authenticator, authorizer("Volunteer"), profileController.getPrevious);
-profileRouter.get("/upcoming/:username", authenticator, authorizer("Volunteer"), profileController.getUpcoming);
+profileRouter.get("/previous/:username", profileController.getPrevious);
+profileRouter.get("/upcoming/:username", profileController.getUpcoming);
 profileRouter.get("/userInfo/:username",  profileController.getUserInfo);
 
 
