@@ -6,7 +6,7 @@ const authorizer = require('../Middleware/authorization');
 
 const managerRouter = Router();
 
-managerRouter.get("/:name",authenticator,  authorizer("Manager"),  managerController.index);
+managerRouter.get("/:name",  managerController.index);
 managerRouter.post("/",authenticator,  authorizer("Manager"), managerController.create);
 managerRouter.get("/activityName/:name",authenticator, authorizer("Manager"),  managerController.showByName);
 managerRouter.get("/activityType/:type",authenticator,  authorizer("Manager"), managerController.showByType);

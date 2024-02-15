@@ -9,9 +9,9 @@ services:
       # persist data of container  
       - test_db:/var/lib/postgresql/data
       # when starting the container, have a look in the database folder & use the SQL file to seed database
-      - ./server/database/:/docker-entrypoint-initdb.d/:ro
+      - ./database/:/docker-entrypoint-initdb.d/:ro
     environment:
-      - POSTGRES_DB=testing
+      - POSTGRES_DB=council_app
       - POSTGRES_USER=testing
       - POSTGRES_PASSWORD=jkljkl
 
