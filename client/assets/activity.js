@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     try {
 
@@ -39,6 +41,49 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error('Error fetching activity data:', error)
     }
 })
+
+document.getElementById("volunteer-button").addEventListener("click", async () => {
+    const loggedInUser = localStorage.getItem("loggedInUser")
+    const token = localStorage.getItem("token")
+    const urlParams = new URLSearchParams(window.location.search)
+    const projectId = urlParams.get('id')
+    console.log(projectId)
+
+    const response1 = await fetch(`http://localhost:3000/profiles/userInfo/${loggedInUser}`)
+    
+    console.log(response1)
+
+    const userInfo = await response1.json()
+
+    const userId = userInfo.id
+
+    const postOptions = {
+        method: "POST",
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userid: userId,
+            projectid: projectId
+        })
+    };
+
+    const postEndpoint = `http://localhost:3000/posts`
+
+    try {
+        const response = await fetch(postEndpoint, postOptions)
+        if (response.status === 200) {
+            console.log("Post successful")
+        } else {
+            console.error("Error posting data")
+        }
+    } catch (error) {
+        console.error("Error posting data:", error)
+    }
+})
+
 
 document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token");
