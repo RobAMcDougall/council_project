@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-}
+} */
 
 
 
@@ -15,18 +15,18 @@ body {
     height: 100vh;
 } */
 
-
+/* 
 .carousel {
     margin: auto;
     width:1000px;
     height:360px;
   }
 
-  
+   */
 
 
 #activities {
-    background-color: #ecf0f1;
+    background-color: rgb(176, 226, 191);
     padding: 20px;
     border-radius: 10px;
     width: 100%;
@@ -34,7 +34,7 @@ body {
 }
 
 #filter-bar {
-    background-color: #3498db;
+    background-color: rgb(144, 189, 241);
     color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -47,3 +47,119 @@ body {
     margin-bottom: 10px;
     width: 100%;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: rgb(163, 230, 183);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    background-color: #ecf0f1;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.list-group {
+    background-color: rgb(144, 189, 241);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.list-group-item:hover {
+    background-color: #fff;
+    color: #3498db;
+}
+
+.carousel {
+    margin: auto;
+    width: 1000px;
+    height: 360px;
+  }
+  
+  .carousel-item {
+    height: 360px;
+  }
+  
+  .carousel-caption {
+    
+    background-color: rgba(0, 0,0,0.7);
+    
+  }
+  
+  .carousel-caption h5 {
+    color: #fff;
+    margin:0;
+  }
+  
+  .carousel-caption p {
+    color: #fff;
+    margin:0;
+  }
+  
