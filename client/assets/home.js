@@ -1,3 +1,6 @@
+
+
+
 document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
