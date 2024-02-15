@@ -5,9 +5,7 @@ const Profile = require("../Models/Profile");
 async function getUserInfo(req, res) {
   try {
     let username = req.params.username;
-    console.log(username)
     const userInfo = await Profile.getUserInfo(username);
-    console.log(userInfo)
     res.status(200).json(userInfo);
   } catch (error) {
     res.status(404).json({ error: error.message });

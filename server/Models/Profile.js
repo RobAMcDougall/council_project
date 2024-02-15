@@ -13,11 +13,9 @@ class Profile {
       (this.activityname = activityname)
   }
   static async getUserInfo(username) {
-    console.log(username)
     const response = await db.query(
       "SELECT * FROM volunteer WHERE username = $1;",[username]
     );
-    console.log(response)
     if (response.rows.length != 1) {
       throw new Error(" can not find user");
     }
@@ -28,7 +26,7 @@ class Profile {
       "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date < CURRENT_DATE;",
       [username]
     );
-
+    
     if (response.rows.length != 1) {
       throw new Error("Error retrieving past projects");
     }
@@ -39,10 +37,11 @@ class Profile {
       "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date > CURRENT_DATE;",
       [username]
     );
-    if (response.rows.length != 1) {
-      throw new Error("Error retrieving upcoming projects");
+    console.log(response.rows)
+    if (response.rows.length < 1) {
+      throw new Error("No upcoming projects found for the user.");
     }
-    return new Profile(response.rows[0]);
+    return response.rows.map(row => new Profile(row));
   }
 }
 
