@@ -100,10 +100,10 @@ class Posts {
     return response.rows.map(row => new Posts(row));
 }
 static async volunteer(data) {
-  const {userid, projectid}= data
-
+  const {userid, projectid} = data
+  console.log(data)
   const ev = await db.query("SELECT * FROM userproject WHERE userid = $1 AND projectid = $2;", [userid, projectid]);
-console.log(data)
+
   if (ev.rows.length > 0) {
     throw new Error("Volunteer opportunity exists");
   }

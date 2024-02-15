@@ -68,8 +68,8 @@ async function showById(req, res){
 async function volunteer(req, res) {
     try {
         console.log(req.body)
-        const { data } = parseInt(req.body); 
-        
+        const  data  = req.body; 
+        console.log(data)
         const newProject = await Posts.volunteer(data);
         res.status(200).json(newProject);
     } catch(error) {
