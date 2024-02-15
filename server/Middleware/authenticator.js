@@ -12,7 +12,7 @@ const authenticator = async (req, res, next) => {
                 throw new Error("Token is bad")
             }
 
-            req.user = { id: validToken.userId, role: validToken.role };
+            req.user = { id: validToken.userid, role: validToken.role };
             
             next();
 
