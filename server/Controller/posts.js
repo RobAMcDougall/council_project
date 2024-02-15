@@ -65,4 +65,17 @@ async function showById(req, res){
     }
 }
 
-module.exports = {index, showByDate, showByType, showByName, showById, getUpcoming}
+async function volunteer(req, res) {
+    try {
+        console.log(req.body)
+        const { data } = parseInt(req.body); 
+        
+        const newProject = await Posts.volunteer(data);
+        res.status(200).json(newProject);
+    } catch(error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+
+module.exports = {index, showByDate, showByType, showByName, showById, getUpcoming, volunteer}
