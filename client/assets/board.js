@@ -158,6 +158,7 @@ document.getElementById("activity-type").addEventListener("change", async () => 
 
     const response = await fetch('http://localhost:3000/posts/')
     const data = await response.json();
+    console.log(selectedActivityType)
    
     const filteredData = data.filter((activity) => {
         return activity.type === selectedActivityType;
@@ -229,6 +230,39 @@ document.getElementById("search-term").addEventListener("input", (event) => {
 
     
     performSearch(searchTerm);
+});
+
+
+
+const daySelect = document.getElementById('day');
+const timeSelect = document.getElementById('time');
+const activityTypeSelect = document.getElementById('activity-type');
+
+daySelect.addEventListener('change', () => {
+    timeSelect.selectedIndex = 0;
+    activityTypeSelect.selectedIndex = 0;
+});
+
+timeSelect.addEventListener('change', () => {
+    daySelect.selectedIndex = 0;
+    activityTypeSelect.selectedIndex = 0;
+});
+
+activityTypeSelect.addEventListener('change', () => {
+    daySelect.selectedIndex = 0;
+    timeSelect.selectedIndex = 0;
+});
+
+const searchTermInput = document.getElementById("search-term");
+
+searchTermInput.addEventListener("input", () => {
+  const daySelect = document.getElementById("day");
+  const timeSelect = document.getElementById("time");
+  const activityTypeSelect = document.getElementById("activity-type");
+
+  daySelect.selectedIndex = 0;
+  timeSelect.selectedIndex = 0;
+  activityTypeSelect.selectedIndex = 0;
 });
 
 
