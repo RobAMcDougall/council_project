@@ -16,12 +16,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             const listItem = document.createElement('a')
             listItem.href = `./activity.html?id=${activity.id}`
             listItem.classList.add('list-group-item', 'list-group-item-action')
+            
+            console.log(activity.date)
 
 
             listItem.innerHTML = `
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">${activity.name}</h5>
-                    <small>${activity.date}</small>
+                    <small>${activity.date.slice(0, 10)}</small>
                 </div>
                 <p class="mb-1">${activity.description}</p>
                 <small>${activity.day} at ${activity.time}</small>
