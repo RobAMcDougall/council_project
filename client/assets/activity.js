@@ -6,24 +6,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const response = await fetch(`http://localhost:3000/posts/activityId/${activityId}`)
         const activityData = await response.json()
+        console.log(activityData)
 
 
-        document.querySelector('.display-4').textContent = activityData.ActivityName
-        document.querySelector('.lead').textContent = activityData.Description
+        document.querySelector('.display-4').textContent = activityData[0].name
+        document.querySelector('.lead').textContent = activityData[0].description
 
     
-        const relevantSkills = document.querySelector('.col-md-6 p')
-        relevantSkills.textContent = `Icons for ${activityData.ActivityType} and names of skills`
+        const relevantSkills = document.querySelector('#skills')
+        relevantSkills.textContent = `${activityData[0].type}`
 
 
-        const scheduleInfo = document.querySelector('.col-md-6 p')
+        const scheduleInfo = document.querySelector('#schedule')
         scheduleInfo.innerHTML = `
-            ${activityData.Day} ${activityData.Date} ${activityData.Time}
+            <h2>Schedule</h2>
+            Day: ${activityData[0].day}
+            <br>
+            Date: ${activityData[0].date}
+            <br>
+            Time: ${activityData[0].time}
+        
         `
 
         const contactInfo = document.querySelector('.card-text')
         contactInfo.innerHTML = `
-            ${activityData.OrgansationName}<br>
+            ${activityData[0].organizationname}<br>
             ${activityData.Email}<br>
             ${activityData.Phone}<br>
         `
