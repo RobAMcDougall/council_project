@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <h2>Schedule</h2>
             Day: ${activityData[0].day}
             <br>
-            Date: ${activityData[0].date}
+            Date: ${activityData[0].date.slice(0, 10)}
             <br>
             Time: ${activityData[0].time}
         
