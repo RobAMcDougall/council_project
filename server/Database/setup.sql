@@ -79,7 +79,20 @@ INSERT INTO Project (ActivityName, ActivityType, Description, Day, Date, "Time",
 wholesome, captivating children books to local children ages 10 and under. Silly voices welcome!',
 'Sunday', '2024-02-25', '12:50:00', 1),
 ('Saturday Morning Learning By Litter-picking.', 'Outdoors', 'Help to clean up one of our various natural
-sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2);
+sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2),
+('Community Skill-share', 'Workshop', 'Join us at the Florin County Library Community Hall every Wednesday evening to a skill share extavaganza.
+Whether you have a skill you want to see passed on, or are keen to expand your horizons, everyone is welcome.', 'Wednesday'. '2024-02-21', '18:00:00', 1),
+('C.V Upgrade Assistance', 'Career', 'Get help from career professionals to improve your C.V and attain the job of your dreams.
+Volunteers with experience in recruitment always needed!', 'Monday', '2024-02-19', '19:30:00', 1),
+('ESL  Tutoring', 'Education', 'Tutors needed to help tutor English as a second language weekly. Come and make a difference
+and help showcase the wonders of English language and culture!', 'Thursday', '2024-02-22', '19:00:00', 1),
+('Bird Feeding Funtime', 'Outdoors', 'Help refill the bird feeders at various spots around Florin County. This is a volunteer
+opportunity geared towards being childrens first experience volunteering. Fridays afterschool you will be picked up in our specialty
+bus and taken to various sites around Florin to help refill the bird feeders, while being educated by some of our keen amateur 
+Ornithologists!', 'Friday', '2024-02-23', '15:30:00', 2),
+('Creative Writing Roundtable', 'Workshop', 'Looking for any volunteers to help host a creative writing roundtable/workshop for
+children of any ages. Help give advice and spark a lifelong passion for the art of storytelling!', 'Tuesday', '2024:02:20', '17:00:00', 1);
+
 
 INSERT INTO UserProject (UserID, ProjectID)
 VALUES
