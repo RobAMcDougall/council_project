@@ -1,4 +1,4 @@
-const Token =require('../models/Token')
+const Token =require('../Models/Token')
 
 const authenticator = async (req, res, next) => {
     try{    

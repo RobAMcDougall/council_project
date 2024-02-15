@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
         const response = await fetch('http://localhost:3000/posts/')
         const data = await response.json();
-
+        
+        console.log(data)
 
         const listGroup = document.querySelector('.list-group')
 
@@ -71,6 +72,7 @@ document.getElementById("day").addEventListener("change", async () => {
         listGroup.appendChild(listItem);
     });
 });
+
 
 
 document.getElementById("time").addEventListener("change", async () => {

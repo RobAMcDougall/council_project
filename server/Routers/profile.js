@@ -12,7 +12,7 @@ profileRouter.get("/", (req, res) => {
 });
 profileRouter.get("/previous/:username",authenticator, authorizer("Volunteer"), profileController.getPrevious);
 profileRouter.get("/upcoming/:username", authenticator, authorizer("Volunteer"), profileController.getUpcoming);
-profileRouter.get("/userInfo/:username", authenticator, authorizer("Volunteer"), profileController.getUserInfo);
+profileRouter.get("/userInfo/:username",  profileController.getUserInfo);
 
 
 module.exports = profileRouter;
