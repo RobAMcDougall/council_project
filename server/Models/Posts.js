@@ -14,7 +14,10 @@ class Posts {
   date,
     Time,
   	organizationid,
-    organizationname
+    organizationname,
+    userid,
+    username,
+
   }) {
     this.id =  projectid;
     (this.name = activityname),
@@ -24,7 +27,9 @@ class Posts {
       (this.date = date),
       (this.time = Time),
       (this.organizationid = organizationid),
-      (this.organizationname = organizationname);
+      (this.organizationname = organizationname),
+      (this.userid = userid),
+      (this.username = username);
   }
   
 
@@ -94,8 +99,26 @@ class Posts {
   
     return response.rows.map(row => new Posts(row));
 }
+static async volunteer(data) {
+  const {userid, projectid} = data
+  console.log(data)
+  const ev = await db.query("SELECT * FROM userproject WHERE userid = $1 AND projectid = $2;", [userid, projectid]);
 
+  if (ev.rows.length > 0) {
+    throw new Error("Volunteer opportunity exists");
+  }
 
+  const response = await db.query(`
+    INSERT INTO UserProject (userid, projectid)
+    VALUES ($1, $2)
+    RETURNING
+      (SELECT p.activityname FROM project AS p WHERE p.projectid = $2) AS activityname,
+      (SELECT p.activitytype FROM project AS p WHERE p.projectid = $2) AS activitytype,
+      (SELECT v.username FROM volunteer AS v JOIN userproject AS up ON v.userid = up.userid WHERE up.projectid = $2) AS username;
+  `, [userid, projectid]);
+ 
+  return new Posts(response.rows[0]);
+}
 }
 
 module.exports = Posts;
