@@ -81,7 +81,7 @@ wholesome, captivating children books to local children ages 10 and under. Silly
 ('Saturday Morning Learning By Litter-picking.', 'Outdoors', 'Help to clean up one of our various natural
 sites whilst learning about its splendid history from one of our tour guides.', 'Saturday', '2024-02-24', '09:00:00', 2),
 ('Community Skill-share', 'Workshop', 'Join us at the Florin County Library Community Hall every Wednesday evening to a skill share extavaganza.
-Whether you have a skill you want to see passed on, or are keen to expand your horizons, everyone is welcome.', 'Wednesday'. '2024-02-21', '18:00:00', 1),
+Whether you have a skill you want to see passed on, or are keen to expand your horizons, everyone is welcome.', 'Wednesday', '2024-02-21', '18:00:00', 1),
 ('C.V Upgrade Assistance', 'Career', 'Get help from career professionals to improve your C.V and attain the job of your dreams.
 Volunteers with experience in recruitment always needed!', 'Monday', '2024-02-19', '19:30:00', 1),
 ('ESL  Tutoring', 'Education', 'Tutors needed to help tutor English as a second language weekly. Come and make a difference
