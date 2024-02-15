@@ -1,28 +1,3 @@
-/* * {
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-} */
-
-
-
-/* main {
-    background-color: rgb(176, 226, 191);
-    height: 100vh;
-} */
-
-/* 
-.carousel {
-    margin: auto;
-    width:1000px;
-    height:360px;
-  }
-
-   */
 
 
 #activities {
@@ -34,7 +9,7 @@ body {
 }
 
 #filter-bar {
-    background-color: rgb(144, 189, 241);
+    /* background-color: rgb(144, 189, 241); */
     color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -56,9 +31,11 @@ body {
     min-height: 100vh;
     color: rgb(163, 230, 183);
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Exo 2", sans-serif;
 }
-
+.navbar-brand{
+    font-family: "Exo 2", sans-serif;
+}
 main {
     background-color: #ecf0f1;
     height: 100vh;
@@ -120,7 +97,7 @@ main {
 }
 
 .list-group {
-    background-color: rgb(144, 189, 241);
+    /* background-color: rgb(144, 189, 241); */
     padding: 20px;
     border-radius: 10px;
     width: 100%;
@@ -139,12 +116,14 @@ main {
 
 .carousel {
     margin: auto;
-    width: 1000px;
-    height: 360px;
+    width: 100vh;
+    height: 560px;
+    border-radius: 10px;
   }
   
   .carousel-item {
-    height: 360px;
+    height: 560px;
+    border-radius: 10px;
   }
   
   .carousel-caption {

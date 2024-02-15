@@ -8,6 +8,7 @@ const postRouter = Router();
 
 postRouter.get("/", postController.index);
 postRouter.get("/upcoming", postController.getUpcoming)
+
 postRouter.get("/activityType/:type",  postController.showByType);
 postRouter.get("/activityName/:name",  postController.showByName);
 postRouter.get("/activityDate/:date",   postController.showByDate);
