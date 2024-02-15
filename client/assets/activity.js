@@ -76,6 +76,8 @@ document.getElementById("volunteer-button").addEventListener("click", async () =
         const response = await fetch(postEndpoint, postOptions)
         if (response.status === 200) {
             console.log("Post successful")
+            alert("You have successfully volunteered for this activity!")
+            window.location.assign("board.html")
         } else {
             console.error("Error posting data")
         }
