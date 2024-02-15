@@ -77,6 +77,40 @@ document.getElementById("day").addEventListener("change", async () => {
 
 
 
+// document.getElementById("time").addEventListener("change", async () => {
+//     const selectedTime = document.getElementById("time").value;
+
+//     const listGroup = document.querySelector(".list-group");
+
+//     const response = await fetch('http://localhost:3000/posts/')
+//     const data = await response.json();
+   
+//     const filteredData = data.filter((activity) => {
+//         return activity.time === selectedTime;
+//     });
+
+    
+//     listGroup.innerHTML = "";
+
+//     filteredData.forEach((activity) => {
+//         const listItem = document.createElement("a");
+//         listItem.href = `./activity.html?id=${activity.id}`;
+//         listItem.classList.add("list-group-item", "list-group-item-action");
+
+//         listItem.innerHTML = `
+//       <div class="d-flex w-100 justify-content-between">
+//         <h5 class="mb-1">${activity.name}</h5>
+//         <small>${activity.date}</small>
+//       </div>
+//       <p class="mb-1">${activity.description}</p>
+//       <small>${activity.Day} at ${activity.time}</small>
+//     `;
+
+//         listGroup.appendChild(listItem);
+//     });
+// });
+
+
 document.getElementById("time").addEventListener("change", async () => {
     const selectedTime = document.getElementById("time").value;
 
@@ -86,7 +120,13 @@ document.getElementById("time").addEventListener("change", async () => {
     const data = await response.json();
    
     const filteredData = data.filter((activity) => {
-        return activity.time === selectedTime;
+        if (selectedTime === "Morning") {
+            return activity.time >= "09:00" && activity.time <= "12:00";
+        } else if (selectedTime === "Afternoon") {
+            return activity.time >= "12:00" && activity.time <= "17:00";
+        } else if (selectedTime === "Evening") {
+            return activity.time >= "17:00" && activity.time <= "24:00";
+        }
     });
 
     
@@ -103,12 +143,13 @@ document.getElementById("time").addEventListener("change", async () => {
         <small>${activity.date}</small>
       </div>
       <p class="mb-1">${activity.description}</p>
-      <small>${activity.Day} at ${activity.time}</small>
+      <small>${activity.day} at ${activity.time}</small>
     `;
 
         listGroup.appendChild(listItem);
     });
 });
+
 
 document.getElementById("activity-type").addEventListener("change", async () => {
     const selectedActivityType = document.getElementById("activity-type").value;
