@@ -65,7 +65,7 @@ document.getElementById("day").addEventListener("change", async () => {
         listItem.innerHTML = `
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${activity.name}</h5>
-          <small>${activity.date}</small>
+          <small>${activity.date.slice(0, 10)}</small>
         </div>
         <p class="mb-1">${activity.description}</p>
         <small>${activity.day} at ${activity.time}</small>
@@ -77,38 +77,6 @@ document.getElementById("day").addEventListener("change", async () => {
 
 
 
-// document.getElementById("time").addEventListener("change", async () => {
-//     const selectedTime = document.getElementById("time").value;
-
-//     const listGroup = document.querySelector(".list-group");
-
-//     const response = await fetch('http://localhost:3000/posts/')
-//     const data = await response.json();
-   
-//     const filteredData = data.filter((activity) => {
-//         return activity.time === selectedTime;
-//     });
-
-    
-//     listGroup.innerHTML = "";
-
-//     filteredData.forEach((activity) => {
-//         const listItem = document.createElement("a");
-//         listItem.href = `./activity.html?id=${activity.id}`;
-//         listItem.classList.add("list-group-item", "list-group-item-action");
-
-//         listItem.innerHTML = `
-//       <div class="d-flex w-100 justify-content-between">
-//         <h5 class="mb-1">${activity.name}</h5>
-//         <small>${activity.date}</small>
-//       </div>
-//       <p class="mb-1">${activity.description}</p>
-//       <small>${activity.Day} at ${activity.time}</small>
-//     `;
-
-//         listGroup.appendChild(listItem);
-//     });
-// });
 
 
 document.getElementById("time").addEventListener("change", async () => {
@@ -140,7 +108,7 @@ document.getElementById("time").addEventListener("change", async () => {
         listItem.innerHTML = `
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">${activity.name}</h5>
-        <small>${activity.date}</small>
+        <small>${activity.date.slice(0, 10)}</small>
       </div>
       <p class="mb-1">${activity.description}</p>
       <small>${activity.day} at ${activity.time}</small>
@@ -175,7 +143,7 @@ document.getElementById("activity-type").addEventListener("change", async () => 
         listItem.innerHTML = `
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${activity.name}</h5>
-          <small>${activity.date}</small>
+          <small>${activity.date.slice(0, 10)}</small>
         </div>
         <p class="mb-1">${activity.description}</p>
         <small>${activity.day} at ${activity.time}</small>
@@ -210,7 +178,7 @@ const performSearch = async (searchTerm) => {
             listItem.innerHTML = `
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">${activity.name}</h5>
-                    <small>${activity.date}</small>
+                    <small>${activity.date.slice(0, 10)}</small>
                 </div>
                 <p class="mb-1">${activity.description}</p>
                 <small>${activity.day} at ${activity.time}</small>

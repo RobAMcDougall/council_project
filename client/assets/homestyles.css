@@ -50,3 +50,16 @@
 .img-thing, .navbar-brand{
   border-radius: 50px;
 }
+
+#urgent-job-name1,
+#urgent-job-name2 {
+  cursor: pointer; 
+  color: blue; 
+  text-decoration: underline;
+  transition: color 0.3s ease; 
+}
+
+#urgent-job-name1:hover,
+#urgent-job-name2:hover {
+  color: darkblue; 
+}

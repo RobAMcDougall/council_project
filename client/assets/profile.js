@@ -41,17 +41,16 @@ const displayUserProfile = (userProfile) => {
 }
 
 const displayUpcomingOpportunities = (upcomingOpportunities) => {
-    console.log(`LOOK HERE FOOL £{upcomingOpportunities}`)
     const upcomingOpportunity1 = upcomingOpportunities[0]
     
     document.getElementById('upcomingOpportunity1').innerHTML = `
-        <p>Name of Activity: ${upcomingOpportunity1.activityname}</p>
+        <p>${upcomingOpportunity1.activityname}</p>
     `
 
     const upcomingOpportunity2 = upcomingOpportunities[1]
     
     document.getElementById('upcomingOpportunity2').innerHTML = `
-        <p>Name of Activity: ${upcomingOpportunity2.activityname}</p>
+        <p>${upcomingOpportunity2.activityname}</p>
     `
 }
 

@@ -18,7 +18,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('urgent-job-name1').innerHTML = nearestPosts[0].name;
     document.getElementById('urgent-job-date1').innerHTML = nearestPosts[0].date.slice(0, 10);
     document.getElementById('urgent-job-name2').innerHTML = nearestPosts[1].name;
-    document.getElementById('urgent-job-date2').innerHTML = nearestPosts[1].date.slice(0, 10);;
+    document.getElementById('urgent-job-date2').innerHTML = nearestPosts[1].date.slice(0, 10);
+
+    document.getElementById('urgent-job-name1').addEventListener("click", () => {
+        window.location.assign("activity.html?id=" + nearestPosts[0].id);
+    });
+
+    document.getElementById('urgent-job-name2').addEventListener("click", () => {
+        window.location.assign("activity.html?id=" + nearestPosts[1].id);
+    });
 });
 
 
