@@ -42,6 +42,7 @@ document.getElementById("day").addEventListener("change", async () => {
     
     const response = await fetch('http://localhost:3000/posts/')
     const data = await response.json();
+    console.log(data);
 
     
     const filteredData = data.filter((activity) => {
@@ -72,14 +73,16 @@ document.getElementById("day").addEventListener("change", async () => {
 });
 
 
-document.getElementById("time").addEventListener("change", () => {
+document.getElementById("time").addEventListener("change", async () => {
     const selectedTime = document.getElementById("time").value;
 
     const listGroup = document.querySelector(".list-group");
 
+    const response = await fetch('http://localhost:3000/posts/')
+    const data = await response.json();
    
     const filteredData = data.filter((activity) => {
-        return activity.Time === selectedTime;
+        return activity.time === selectedTime;
     });
 
     
@@ -87,30 +90,32 @@ document.getElementById("time").addEventListener("change", () => {
 
     filteredData.forEach((activity) => {
         const listItem = document.createElement("a");
-        listItem.href = `./activity.html?id=${activity.ProjectID}`;
+        listItem.href = `./activity.html?id=${activity.id}`;
         listItem.classList.add("list-group-item", "list-group-item-action");
 
         listItem.innerHTML = `
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">${activity.ActivityName}</h5>
-        <small>${activity.Date}</small>
+        <h5 class="mb-1">${activity.name}</h5>
+        <small>${activity.date}</small>
       </div>
-      <p class="mb-1">${activity.Description}</p>
-      <small>${activity.Day} at ${activity.Time}</small>
+      <p class="mb-1">${activity.description}</p>
+      <small>${activity.Day} at ${activity.time}</small>
     `;
 
         listGroup.appendChild(listItem);
     });
 });
 
-document.getElementById("activity-type").addEventListener("change", () => {
+document.getElementById("activity-type").addEventListener("change", async () => {
     const selectedActivityType = document.getElementById("activity-type").value;
 
     const listGroup = document.querySelector(".list-group");
 
+    const response = await fetch('http://localhost:3000/posts/')
+    const data = await response.json();
    
     const filteredData = data.filter((activity) => {
-        return activity.ActivityType === selectedActivityType;
+        return activity.type === selectedActivityType;
     });
 
    
@@ -118,54 +123,69 @@ document.getElementById("activity-type").addEventListener("change", () => {
 
     filteredData.forEach((activity) => {
         const listItem = document.createElement("a");
-        listItem.href = `./activity.html?id=${activity.ProjectID}`;
+        listItem.href = `./activity.html?id=${activity.id}`;
         listItem.classList.add("list-group-item", "list-group-item-action");
 
         listItem.innerHTML = `
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">${activity.ActivityName}</h5>
-          <small>${activity.Date}</small>
+          <h5 class="mb-1">${activity.name}</h5>
+          <small>${activity.date}</small>
         </div>
-        <p class="mb-1">${activity.Description}</p>
-        <small>${activity.Day} at ${activity.Time}</small>
+        <p class="mb-1">${activity.description}</p>
+        <small>${activity.day} at ${activity.time}</small>
       `;
 
         listGroup.appendChild(listItem);
     });
 });
 
-document.getElementById("search-bar").addEventListener("submit", (event) => {
-    event.preventDefault();
 
-    const searchTerm = document.getElementById("search-term").value;
-
+const performSearch = async (searchTerm) => {
     const listGroup = document.querySelector(".list-group");
 
-   
-    const filteredData = data.filter((activity) => {
-        return activity.ActivityName.includes(searchTerm) || activity.Description.includes(searchTerm);
-    });
+    try {
+        const response = await fetch('http://localhost:3000/posts/');
+        const data = await response.json();
+        
+
+        const filteredData = data.filter((activity) => {
+            return activity.name.includes(searchTerm) || activity.description.includes(searchTerm);
+        });
+
+        console.log(filteredData);
+
+        listGroup.innerHTML = "";
+
+        filteredData.forEach((activity) => {
+            const listItem = document.createElement("a");
+            listItem.href = `./activity.html?id=${activity.id}`;
+            listItem.classList.add("list-group-item", "list-group-item-action");
+
+            listItem.innerHTML = `
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">${activity.name}</h5>
+                    <small>${activity.date}</small>
+                </div>
+                <p class="mb-1">${activity.description}</p>
+                <small>${activity.day} at ${activity.time}</small>
+            `;
+
+            listGroup.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
+
+document.getElementById("search-term").addEventListener("input", (event) => {
+    const searchTerm = event.target.value.trim();
+    console.log(searchTerm);
 
     
-    listGroup.innerHTML = "";
-
-    filteredData.forEach((activity) => {
-        const listItem = document.createElement("a");
-        listItem.href = `./activity.html?id=${activity.ProjectID}`;
-        listItem.classList.add("list-group-item", "list-group-item-action");
-
-        listItem.innerHTML = `
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">${activity.ActivityName}</h5>
-        <small>${activity.Date}</small>
-      </div>
-      <p class="mb-1">${activity.Description}</p>
-      <small>${activity.Day} at ${activity.Time}</small>
-    `;
-
-        listGroup.appendChild(listItem);
-    });
+    performSearch(searchTerm);
 });
+
 
 document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token");
