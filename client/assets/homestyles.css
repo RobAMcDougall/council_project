@@ -14,3 +14,12 @@
   .job-info p {
     margin-bottom: 5px;
   }
+  
+.navbar-nav{
+  column-gap: 30px;
+}
+.navbar-brand{
+  font-family: "Exo 2", sans-serif;
+  font-weight: bold;
+  margin-right: 10px;
+}
