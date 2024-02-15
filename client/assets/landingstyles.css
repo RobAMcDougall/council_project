@@ -31,3 +31,32 @@ body {
   .btn-container .btn {
     margin-left: 5px; 
   }
+.front-page{
+  width: 100%;
+  height: 860px;
+  top:0;
+  left:0;
+  z-index:-1;
+  background-image: url(./workshop-volunteers.jpg);
+  position: absolute;
+  opacity: 0.5;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.mynav{
+  margin-top: 30px;
+  margin-left: 70%;
+}
+.middle-content{
+  margin-top: 350px;
+}
+.intro-text{
+color: black;
+}
+.my-small-post{
+  margin-top: 1300;
+}
+.test-text{
+  margin-top: 500px;
+}
