@@ -1,0 +1,103 @@
+* {    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;}
+  
+body {
+    background-color: #f8f9fa;
+  }
+  .container-fluid {
+    padding: 20px;
+  }
+  .main-box {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center; 
+  }
+  .logo-box {
+    padding: 20px;
+    background-color: #ffffff;
+    text-align: right; 
+  }
+  .separator {
+    border-top: 1px solid #ced4da;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .intro-text {
+    margin-bottom: 20px;
+    text-align: center; 
+  }
+  .btn-container {
+    text-align: center; 
+  }
+  .btn-container .btn {
+    margin-left: 5px; 
+  }
+.front-page{
+  width: 900px;
+  height: 860px;
+  top:0;
+  left:0;
+  z-index:-1;
+  background-image: url(./workshop-volunteers.jpg);
+  position: absolute;
+  opacity: 0.5;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20% 90% 30% 90% / 20% 30% 90% 90% !important;
+}
+.mynav{
+  margin-top: 30px;
+  margin-left: 70%;
+}
+.middle-content{
+  margin-top: 350px;
+  margin-left: 59%;
+}
+.intro-text{
+color: black;
+}
+.my-small-post{
+  margin-top: 1300;
+}
+.test-text{
+  margin-top: 300px;
+}
+
+.nav-item{
+  margin:20px;
+}
+.header-line{
+  font-size: 50px; 
+   font-weight: bold;
+   color: #2F86A6;
+   font-family: "Protest Riot", sans-serif;
+  
+}
+.protest-riot-regular {
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.paras{
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 0;
+  font-size: 20px;
+  color:#38A3A5;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+.paras-bottom{
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color:#38A3A5;
+}

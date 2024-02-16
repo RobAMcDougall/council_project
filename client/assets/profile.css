@@ -1,0 +1,42 @@
+* {    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;}
+
+.navbar-nav{
+    column-gap: 30px;
+}
+.navbar-brand{
+    font-family: "Exo 2", sans-serif;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.info-container{
+    margin-top: 200px;
+    row-gap: 20px;
+}
+.img-thumbnail{
+    width:600px
+}
+
+
+#addButton, #submitButton {
+    display: block;
+    margin: 0 auto;
+}
+
+#aboutMeText {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#skillInputContainer {
+    text-align: center;
+  }
+  
+  #submitButton, #addSkillButton {
+    display: block;
+    margin: 0 auto;
+  }

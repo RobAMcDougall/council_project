@@ -1,0 +1,106 @@
+* {    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;}
+  
+.urgent-section {
+    background-color: #f8d7da; 
+    padding: 15px;
+    border: 1px solid #dc3545; 
+    border-radius: 5px;
+  }
+
+  .urgent-title {
+    color: #dc3545; 
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .job-info p {
+    margin-bottom: 5px;
+  }
+  .navbar-brand {
+    font-size: 36px;
+    font-weight: bold;
+}
+.navbar-nav{
+  column-gap: 30px;
+  
+
+}
+
+.navbar-brand{
+  font-family: "Exo 2", sans-serif;
+}
+.bg-body-tertiary{
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+}
+.navbar-brand{
+  font-family: "Exo 2", sans-serif;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.mission{
+  margin-top:300px;
+}
+.front-page{
+  width: 1000px;
+  height: 960px;
+  top:0;
+  left:0;
+  z-index:-1;
+  background-image: url(./workshop-volunteers.jpg);
+  position: absolute;
+  opacity: 0.5;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20% 90% 30% 90% / 20% 30% 90% 90% !important;
+}
+.navbar {
+  background-color: #3498db00;
+  color: #fff;
+  padding: 10px 0;
+  background-image: linear-gradient(135deg, #f5f5f5 0%, #afddc9 100%);
+}
+.mynav{
+  margin-top: 30px;
+  margin-left: 50%;
+}
+.col-md-2{
+  margin-left: 200px;
+}
+.img-thing, .navbar-brand{
+  border-radius: 50px;
+}
+
+#urgent-job-name1,
+#urgent-job-name2 {
+  cursor: pointer; 
+  color: blue; 
+  text-decoration: underline;
+  transition: color 0.3s ease; 
+}
+
+#urgent-job-name1:hover,
+#urgent-job-name2:hover {
+  color: darkblue; 
+}
+.mycontain{
+  margin-left: 50%;
+  align-content: space-around;
+}
+.myhead{
+  font-size: 50px; 
+   font-weight: bold;
+   color: #2F86A6;
+   font-family: "Protest Riot", sans-serif;
+   margin-bottom: 10px;
+}
+.mypara{
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color:#1e6061;
+}
