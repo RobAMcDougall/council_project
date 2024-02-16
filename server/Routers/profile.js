@@ -13,8 +13,8 @@ profileRouter.get("/", (req, res) => {
 profileRouter.get("/previous/:username", profileController.getPrevious);
 profileRouter.get("/upcoming/:username", profileController.getUpcoming);
 profileRouter.get("/userInfo/:username",  profileController.getUserInfo);
-profileRouter.patch("/aboutMe/:id", profileController.addingAboutMe);
-profileRouter.patch("/skills/:id", profileController.addingSkills);
+profileRouter.patch("/aboutMe/:username", profileController.addingAboutMe);
+profileRouter.patch("/skills/:username", profileController.addingSkills);
 
 module.exports = profileRouter;
 

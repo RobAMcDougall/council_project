@@ -44,17 +44,17 @@ class Profile {
     }
     return response.rows.map(row => new Profile(row));
   }
-  static async updatingAboutMe(userid, data){
+  static async updatingAboutMe(username, data){
     const {aboutme} =data
-    let response = await db.query ("UPDATE volunteer SET aboutme = $1 WHERE userid = $2 RETURNING *;", [aboutme, userid])
+    let response = await db.query ("UPDATE volunteer SET aboutme = $1 WHERE username = $2 RETURNING *;", [aboutme, username])
     if (response.rows.length != 1) {
       throw new Error("Unable to update About me.")
     }
     return new Profile(response.rows[0]);
   }
-  static async updateSkills(id ,data){
+  static async updateSkills(username ,data){
     const{ skills } =data
-    let response =await db.query("UPDATE volunteer SET skills = $1 WHERE userid = $2 RETURNING *;", [skills, id])
+    let response =await db.query("UPDATE volunteer SET skills = $1 WHERE username = $2 RETURNING *;", [skills,username])
     if (response.rows.length != 1) {
       throw new Error("Unable to update skills.")
     }
