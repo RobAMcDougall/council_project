@@ -53,6 +53,47 @@ const displayUpcomingOpportunities = (upcomingOpportunities) => {
         <p>${upcomingOpportunity2.activityname}</p>
     `
 }
+const showSkillInput = () => {
+    document.getElementById('addSkillButton').style.display = 'none';
+    document.getElementById('skillInputContainer').style.display = 'block';
+}
+
+const submitSkill = () => {
+
+    const skillInputValue = document.getElementById('skillInput').value;
+    console.log(skillInputValue)
+  
+ 
+  
+
+      document.getElementById('skillInput').value = '';
+
+
+    document.getElementById('submitButton').style.display = 'none';
+    document.getElementById('skillInputContainer').style.display = 'none';
+
+
+    document.getElementById('addSkillButton').style.display = 'block';
+      
+} 
+
+  
+const showSubmitButton = () => {
+    document.getElementById("addButton").style.display = "none";
+    document.getElementById("aboutMeText").style.display = "block";
+    document.getElementById("aboutMeText").readOnly = false;
+    document.getElementById("submitButton").style.display = "block";
+}
+const submitDescription = () => {
+
+    let aboutMeDescription = document.getElementById("aboutMeText").value;
+    alert("Submitted Description: " + aboutMeDescription);
+
+    document.getElementById("addButton").style.display = "block";
+    document.getElementById("aboutMeText").style.display = "none";
+    document.getElementById("aboutMeText").readOnly = true;
+    document.getElementById("submitButton").style.display = "none";
+}
 
 
 

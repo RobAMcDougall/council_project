@@ -19,3 +19,24 @@
 .img-thumbnail{
     width:600px
 }
+
+
+#addButton, #submitButton {
+    display: block;
+    margin: 0 auto;
+}
+
+#aboutMeText {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#skillInputContainer {
+    text-align: center;
+  }
+  
+  #submitButton, #addSkillButton {
+    display: block;
+    margin: 0 auto;
+  }
