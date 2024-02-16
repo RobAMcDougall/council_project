@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const response = await fetch(`http://localhost:3000/posts/activityId/${activityId}`)
         const activityData = await response.json()
-        console.log(activityData)
 
 
         document.querySelector('.display-4').textContent = activityData[0].name
@@ -30,11 +29,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         `
 
+        
+
         const contactInfo = document.querySelector('.card-text')
         contactInfo.innerHTML = `
             ${activityData[0].organizationname}<br>
-            ${activityData.Email}<br>
-            ${activityData.Phone}<br>
         `
 
     } catch (error) {
