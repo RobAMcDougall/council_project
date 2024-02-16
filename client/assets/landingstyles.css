@@ -37,7 +37,7 @@ body {
     margin-left: 5px; 
   }
 .front-page{
-  width: 100%;
+  width: 900px;
   height: 860px;
   top:0;
   left:0;
@@ -48,6 +48,7 @@ body {
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 20% 90% 30% 90% / 20% 30% 90% 90% !important;
 }
 .mynav{
   margin-top: 30px;
@@ -55,6 +56,7 @@ body {
 }
 .middle-content{
   margin-top: 350px;
+  margin-left: 59%;
 }
 .intro-text{
 color: black;
@@ -63,5 +65,39 @@ color: black;
   margin-top: 1300;
 }
 .test-text{
-  margin-top: 500px;
+  margin-top: 300px;
+}
+
+.nav-item{
+  margin:20px;
+}
+.header-line{
+  font-size: 50px; 
+   font-weight: bold;
+   color: #2F86A6;
+   font-family: "Protest Riot", sans-serif;
+  
+}
+.protest-riot-regular {
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.paras{
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 0;
+  font-size: 20px;
+  color:#38A3A5;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+.paras-bottom{
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color:#38A3A5;
 }
