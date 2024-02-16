@@ -12,13 +12,14 @@ CREATE TABLE Organization (
     Role VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Volunteer ( 
+CREATE TABLE Volunteer (
     UserID SERIAL PRIMARY KEY,
     Username VARCHAR(255) NOT NULL,
     Password VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Role VARCHAR(255) NOT NULL,
-    AboutMe TEXT
+    AboutMe TEXT,
+    Skills TEXT[]
 );
 
 CREATE TABLE Tokens (

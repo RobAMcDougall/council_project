@@ -29,5 +29,28 @@ async function getUpcoming(req, res) {
     res.status(404).json({ error: error.message });
   }
 }
+async function addingAboutMe(req, res){
+  try{
+    console.log(34)
+    const id = parseInt(req.params.id);
+    const data = req.body
+    const profile = await Profile.updatingAboutMe(id, data)
+    res.status(200).json(profile)
+  }catch(error){
+    res.status(404).json({ "error": error.message })
+  }
+}
+async function addingSkills(req, res){
+  try{
+    const id = parseInt(req.params.id);
+    const data = req.body
+    const profile = await Profile.updateSkills(id, data)
+    res.status(200).json(profile)
+  }catch(error){
+    res.status(404).json({ "error": error.message })
+  }
+}
 
-module.exports = { getPrevious, getUpcoming, getUserInfo };
+
+
+module.exports = { getPrevious, getUpcoming, getUserInfo, addingAboutMe, addingSkills };
