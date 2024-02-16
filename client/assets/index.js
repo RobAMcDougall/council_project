@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     if (response.status == 200) {
         localStorage.setItem("token", data.token)
         localStorage.setItem("loggedInUser", form.get("username"))
-        window.location.assign("board.html")
+        window.location.assign("home.html")
     } else {
         alert(data.error);
     }

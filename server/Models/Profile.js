@@ -11,11 +11,12 @@ class Profile {
       (this.email = email),
       (this.aboutme = aboutme),
       (this.skills = skills),
-      (this.activityname = activityname)
+      (this.activityname = activityname);
   }
   static async getUserInfo(username) {
     const response = await db.query(
-      "SELECT * FROM volunteer WHERE username = $1;",[username]
+      "SELECT * FROM volunteer WHERE username = $1;",
+      [username]
     );
     if (response.rows.length != 1) {
       throw new Error(" can not find user");
@@ -27,7 +28,7 @@ class Profile {
       "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date < CURRENT_DATE;",
       [username]
     );
-    
+
     if (response.rows.length != 1) {
       throw new Error("Error retrieving past projects");
     }
@@ -38,25 +39,31 @@ class Profile {
       "SELECT p.activityname FROM volunteer u JOIN userproject up ON u.userid = up.userid JOIN project p ON up.projectid = p.projectid WHERE u.username = $1 AND p.date > CURRENT_DATE;",
       [username]
     );
-    console.log(response.rows)
+    console.log(response.rows);
     if (response.rows.length < 1) {
       throw new Error("No upcoming projects found for the user.");
     }
-    return response.rows.map(row => new Profile(row));
+    return response.rows.map((row) => new Profile(row));
   }
-  static async updatingAboutMe(username, data){
-    const {aboutme} =data
-    let response = await db.query ("UPDATE volunteer SET aboutme = $1 WHERE username = $2 RETURNING *;", [aboutme, username])
+  static async updatingAboutMe(username, data) {
+    const { aboutme } = data;
+    let response = await db.query(
+      "UPDATE volunteer SET aboutme = $1 WHERE username = $2 RETURNING *;",
+      [aboutme, username]
+    );
     if (response.rows.length != 1) {
-      throw new Error("Unable to update About me.")
+      throw new Error("Unable to update About me.");
     }
     return new Profile(response.rows[0]);
   }
-  static async updateSkills(username ,data){
-    const{ skills } =data
-    let response =await db.query("UPDATE volunteer SET skills = $1 WHERE username = $2 RETURNING *;", [skills,username])
+  static async updateSkills(username, data) {
+    const { skills } = data;
+    let response = await db.query(
+      "UPDATE volunteer SET skills = $1 WHERE username = $2 RETURNING *;",
+      [skills, username]
+    );
     if (response.rows.length != 1) {
-      throw new Error("Unable to update skills.")
+      throw new Error("Unable to update skills.");
     }
     return new Profile(response.rows[0]);
   }
