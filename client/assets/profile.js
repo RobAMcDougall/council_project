@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 const displayUserProfile = (userProfile) => {
+    console.log(userProfile.skills, userProfile.aboutme)
+    const aboutMe = userProfile.aboutme;
+    const skills = userProfile.skills;
+    document.getElementById("skillsDisplay").innerHTML = skills;
+     document.getElementById("aboutMeDisplay").innerHTML = aboutMe;
     document.getElementById('nameLabel').innerText += ' ' + userProfile.username
     document.getElementById('contactInfoLabel').innerText += ' ' + userProfile.email
 }
@@ -96,6 +101,7 @@ const submitSkill = async () => {
 
 
     document.getElementById('addSkillButton').style.display = 'block';
+    window.location.reload();
 
 }
 
@@ -140,6 +146,7 @@ const submitDescription = async () => {
     document.getElementById("aboutMeText").style.display = "none";
     document.getElementById("aboutMeText").readOnly = true;
     document.getElementById("submitButton").style.display = "none";
+    window.location.reload();
 }
 
 
