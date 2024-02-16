@@ -49,57 +49,6 @@
 
 
 
-    <!-- <div class="info-container">
-        <div class="container text-center">
-            <div class="row">
-            <div class="img-comtainer col-4">
-                <img src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-thumbnail" alt="...">
-            </div>
-        
-               
-
-                <div class="col-4" id="centerWideRectangle">
-                    <h4 class="mb-4" id="upcomingOpportunitiesHeader">Upcoming Opportunities:</h4>
-
-                    <div class="mb-3" id="upcomingOpportunity1">
-                        <h6>Organization:</h6>
-                        <p>Date:</p>
-                        <p>Name of Activity:</p>
-                    </div>
-
-                    <div id="upcomingOpportunity2">
-                        <h6>Organization:</h6>
-                        <p>Date:</p>
-                        <p>Name of Activity:</p>
-                    </div>
-
-                </div>
-
-                <div class="col-4" id="rightRectangle">
-                    <h4 class="mb-4" id="previousOpportunitiesHeader">Previous Volunteer Opportunities:</h4>
-
-                    <div class="mb-3" id="previousOpportunity1">
-                        <h6>Organization:</h6>
-                        <p>Date:</p>
-                        <p>Name of Activity:</p>
-                    </div>
-
-                    <div id="previousOpportunity2">
-                        <h6>Organization:</h6>
-                        <p>Date:</p>
-                        <p>Name of Activity:</p>
-                    </div>
-                </div>
-                <div class="col-4" id="leftRectangle">
-                    <h5 id="nameLabel">Name:</h5>
-                    <h5 id="contactInfoLabel">Contact Info:</h5>
-                    <h5 id="skillsLabel">Skills:</h5>
-                    <h5 id="aboutMeLabel">About Me:</h5>
-                </div>
-
-            </div>
-        </div>
-    </div> -->
     <div class="info-container">
         <div class="container text-center">
             <div class="row">
@@ -112,12 +61,14 @@
                     <h5 id="nameLabel">Name:</h5>
                     <h5 id="contactInfoLabel">Contact Info:</h5>
                     <h5 id="skillsLabel">Skills:</h5>
+                    <p id="skillsDisplay"></p>
                     <button id="addSkillButton" onclick="showSkillInput()">Add</button>
                     <div id="skillInputContainer" style="display: none;">
                         <input type="text" id="skillInput" placeholder="Please type in a skill">
                         <button id="submitSkillButton" onclick="submitSkill()">Submit</button>
                     </div>
                     <h5 id="aboutMeLabel">About Me:</h5>
+                    <p id="aboutMeDisplay"></p>
                     <textarea id="aboutMeText" rows="4" style="resize: none;" readonly></textarea>
                     <button id="addButton" onclick="showSubmitButton()">Add</button>
                     <button id="submitButton" onclick="submitDescription()" style="display: none;">Submit</button>
