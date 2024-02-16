@@ -1,3 +1,8 @@
+* {    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;}
+  
 .urgent-section {
     background-color: #f8d7da; 
     padding: 15px;

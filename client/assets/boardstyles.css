@@ -1,4 +1,7 @@
-
+* {    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;}
 
 #activities {
     background-color: rgb(176, 226, 191);
