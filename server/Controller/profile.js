@@ -32,9 +32,9 @@ async function getUpcoming(req, res) {
 async function addingAboutMe(req, res){
   try{
     console.log(34)
-    const id = parseInt(req.params.id);
+    let username = req.params.username;
     const data = req.body
-    const profile = await Profile.updatingAboutMe(id, data)
+    const profile = await Profile.updatingAboutMe(username, data)
     res.status(200).json(profile)
   }catch(error){
     res.status(404).json({ "error": error.message })
@@ -42,9 +42,9 @@ async function addingAboutMe(req, res){
 }
 async function addingSkills(req, res){
   try{
-    const id = parseInt(req.params.id);
+    let username = req.params.username;
     const data = req.body
-    const profile = await Profile.updateSkills(id, data)
+    const profile = await Profile.updateSkills(username, data)
     res.status(200).json(profile)
   }catch(error){
     res.status(404).json({ "error": error.message })
